@@ -1,0 +1,30 @@
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+background: linear-gradient(to , #FF0000, white);
+}
+
+.inputs{
+    min-height: 25vh;
+    min-width: 20vw;
+    display: grid;
+    gap: 4vh;
+    grid-row: auto auto;
+}
+
+button {
+    background-color:mediumturquoise;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container{
+    background-color:color-mix(in srgb-linear, blue 20%, grey 80%);
+    padding: 5vh;
+    border-radius: 4vw;
+}
