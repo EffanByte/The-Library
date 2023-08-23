@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const myLibrary = [];
-    
+    const divs = [];
     console.log("Dom content loaded")
     let dialog = document.getElementById("sidebar"); 
     let addbtn = document.getElementById("addbook");
@@ -23,8 +23,10 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
     const formData = new FormData(form);
+    myLibrary.push(formData);
+    console.log(myLibrary)
     form.reset();
-    for (item of formData){
+    for (item of myLibrary[myLibrary.length-1]){
         console.log(item[0], item[1])
     }
     addcard(formData);
@@ -38,6 +40,7 @@ console.log("Closed");
 function addcard(formdata){
     const cards = document.querySelector(".cards")
     let card = document.createElement("div");
+    divs.push(card);
     card.classList.add("card");
     for (item of formdata){
         card.innerHTML += item[0] + item[1];
@@ -49,16 +52,19 @@ function addcard(formdata){
     cross.classList.add("delete");
     read.classList.add("readbook")
     cross.innerHTML = "&#9587";
-    read.innerHTML = "Finished Reading"
+    read.innerHTML = "Finished Reading";
     card.appendChild(read);
     card.appendChild(cross);
     cross.addEventListener("click", function(e) {
         var source = e.target;
+        if (divs.includes(source.parentNode))
+        {
+            let index = divs.indexOf(source.parentNode);
+            console.log(index);
+        }
         source.parentNode.remove()
     });
-    read.addEventListener("click", function(e){
-        e.target
-    })
+
 }
 });
 
