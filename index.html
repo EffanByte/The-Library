@@ -21,11 +21,11 @@
          </div>
         <dialog id="sidebar">
           <form id = "form" action = "index.html" method = "GET">
-            <input type="text" placeholder="Book Name" name="Title:">
-            <input type="text" placeholder="Author Name" name = "Author:">
-            <input type="tel" placeholder="Number of Pages"name = "Pages:">
-            <label><input type="radio" name="status:" value = "Read Before">Read It Before</label>
-            <label><input type="radio" name="status:" value = "Not Read Before">Not Read it Before</label>
+            <input type="text" placeholder="Book Name" name="Title:" required>
+            <input type="text" placeholder="Author Name" name = "Author:" required>
+            <input type="tel" placeholder="Number of Pages"name = "Pages:" required>
+            <label><input type="radio" name="status:" value = "Read Before" required>Read It Before</label>
+            <label><input type="radio" name="status:" value = "Not Read Before ">Not Read it Before</label>
             <button type="submit" id = "submit">Add the Book to the Library</button>
           </form>
         </dialog>

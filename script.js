@@ -8,11 +8,13 @@ document.addEventListener("DOMContentLoaded", function() {
     addbtn.addEventListener("click", function(e) {
         e.stopImmediatePropagation();
         e.preventDefault();
-        dialog.show();
+        if (dialog.open)
+        dialog.close();
+    else
+    dialog.show();
         openCheck(dialog);
     });
     sbmt.addEventListener("click", function(e) {
-        dialog.close();
         openCheck(dialog);
     })
 const form = document.querySelector("form");
@@ -21,6 +23,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     e.stopImmediatePropagation();
     const formData = new FormData(form);
+    form.reset();
     for (item of formData){
         console.log(item[0], item[1])
     }
@@ -34,13 +37,28 @@ console.log("Closed");
 }
 function addcard(formdata){
     const cards = document.querySelector(".cards")
-    let card = document.createElement("textarea");
+    let card = document.createElement("div");
     card.classList.add("card");
     for (item of formdata){
-        card.innerHTML += item[0] + item[1] + "\r\n";
+        card.innerHTML += item[0] + item[1];
+        card.innerHTML += "<br>"
     }
     cards.appendChild(card);
-    card.setAttribute('disabled', '')
+    let cross = document.createElement("button");
+    let read = document.createElement("button");
+    cross.classList.add("delete");
+    read.classList.add("readbook")
+    cross.innerHTML = "&#9587";
+    read.innerHTML = "Finished Reading"
+    card.appendChild(read);
+    card.appendChild(cross);
+    cross.addEventListener("click", function(e) {
+        var source = e.target;
+        source.parentNode.remove()
+    });
+    read.addEventListener("click", function(e){
+        e.target
+    })
 }
 });
 
